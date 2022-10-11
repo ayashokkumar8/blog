@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Lato', sans-serif;
+    /* color: #000000; */
+      /*font-weight: 300;
+      font-size: 18px;
+      color: #666;*/
+    background: #e4e5e4; /* Old browsers */
+    background: -moz-linear-gradient(left, #e4e5e4 0%, #f4f5f4 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #e4e5e4 0%, #f4f5f4 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #e4e5e4 0%, #f4f5f4 100%); /* W3C, IE10+, FF16+, Chrome26+,Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4e5e4', endColorstr='#f4f5f4', GradientType=1 ); /* IE6-9 */
+}
+
+a:hover{
+    text-decoration: none !important;
+}
+
+.spinner {
+    padding-top: 100px;
+    margin-left: auto;
+    margin-bottom: 0px;
+    margin-right: auto;
+    width: 110px;
+    text-align: center;
+}
+  
+.spinner > div {
+    width: 18px;
+    height: 18px;
+    background-color: #54ac68;
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+  
+.spinner .bounce1 {
+   -webkit-animation-delay: -0.32s;
+   animation-delay: -0.32s;
+}
+  
+.spinner .bounce2 {
+   -webkit-animation-delay: -0.16s;
+   animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+}
+  
+@keyframes sk-bouncedelay {
+    0%, 80%, 100% { 
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    } 40% { 
+      -webkit-transform: scale(1.0);
+      transform: scale(1.0);
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.login-container{
+    background: white;
+    width: 30%;
+    padding: 1rem;
+    position: relative;
+    /* top: 50%; */
+    margin-top: 10%;
+    border-radius: 10px;
+    border: 1px solid #ada5a5;
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* margin: 0 auto; */
+    justify-content: center;
+    background-position: center;
+}
+
+.limiter{
+    width: 100%;
+    margin: 0 auto;
+}

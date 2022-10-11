@@ -1,0 +1,25 @@
+<!-- Login Page  -->
+<div class="limiter">
+    <div class="main-container">
+        <div class="login-container">
+            <h4 class="text-center"><b>Login</b></h4>
+            <!-- User name text field -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control form-control-sm" [(ngModel)]="userName">
+            </div>
+            <!-- Password text field -->
+            <div class="form-group mb-4">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control form-control-sm" [(ngModel)]="password">
+            </div>
+            <!-- Shown if error message is true -->
+            <div *ngIf="errorMessage">
+                <p class="text-danger">
+                    Invalid user details please give valid details !!
+                </p>
+            </div>
+            <button class="btn btn-secondary btn-block" (click)="loginCheck()" [disabled]="!userName||!password">Login</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <!-- Checking the local memory if post is present or not -->
+    <div *ngIf="stateHolder.post"> 
+        <div class="card">
+            <div class="card-body">
+                <!-- Post section with image of the post and title of the post -->
+                <div class="text-center">
+                    <img src="http://placehold.it/400x200" alt="">
+                    <p><b>{{stateHolder.post.title}}</b></p>
+                </div>
+                <p>{{stateHolder.post.body}}</p>
+
+                <!-- Comment section -->
+                <h5><b>Comments</b></h5>
+                <!-- Using the angular switch to manage the loading status -->
+                <ng-container [ngSwitch]="status">
+                    <ng-container *ngSwitchCase="'ok'">
+                        <!-- Displaying Comments of the post -->
+                        <ng-container *ngFor="let pc of postComments">
+                            <div class="card mb-2">
+                                <div class="card-body" *ngIf="!emptyMessage">
+                                    <div class="float-left">
+                                        <img  *ngIf="pc.gender =='M'" src="assets/images/person1.png" alt="" style="width: 100px; height: 100px;">
+                                        <img  *ngIf="pc.gender =='F'" src="assets/images/person2.png" alt="" style="width: 100px; height: 100px;">
+                                    </div>
+                                    <div style="margin-left: 7rem;">
+                                        <p><b>{{pc.name}}</b></p>
+                                            {{pc.body}}
+                                    </div>
+                                </div>
+                                <!-- Displaying error message when error occured -->
+                                <div class="card-body" *ngIf="emptyMessage">
+                                    <p>Sorry!! No comments present</p>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                    <!-- Showing the loader when the status of the call is loading -->
+                    <ng-container *ngSwitchCase="'busy'">
+                        <div class="spinner">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                            Loading...
+                        </div>
+                    </ng-container>
+                </ng-container>
+                <div class="mb-3"></div>
+                
+                <!-- Adding comment section -->
+                <h5><b>Add a Comment</b></h5>
+                <textarea name="add-comment" id="" cols="30" rows="3" class="form-control mb-2" [(ngModel)]="comment"></textarea>
+                <button class="btn btn-secondary" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back to posts</button>
+                <button class="btn btn-primary float-right" (click)="sendComment()" [disabled]="!comment"> Send </button>
+            </div>
+        </div>
+    </div>
+</div>

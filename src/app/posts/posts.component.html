@@ -1,0 +1,51 @@
+<!-- Nav bar for posts -->
+<nav class="navbar navbar-light bg-light mb-2">
+    <a class="navbar-brand">POSTS</a>
+    <form class="form-inline">
+       <span *ngIf="user" class="mr-2">{{user}}</span> <a href="javascript:void(0)" (click)="logout()">Logout <i class="fa fa-power-off"></i></a>
+    </form>
+</nav>
+
+<div class="container">
+    <!-- Angular switch used to switch according to the api call status -->
+    <div [ngSwitch]="status">
+        <div *ngSwitchCase="'ok'">
+            <!-- Main posts container if data is present -->
+            <ng-container *ngIf="!emptyMessage">
+                <div *ngFor="let post of takenData">
+                    <div class="card mb-2 pointer" (click)="postClick(post)">
+                        <div class="row no-gutters">
+                            <div class="col-xl-2 col-lg-3 col-md-4">
+                                <img src= "http://placehold.it/200x200" alt="...">
+                            </div>
+                            <div class="col-xl-8 col-lg-9 col-md-8">
+                                <div class="card-body">
+                                    {{post.title}} <i class="fa fa-ellipsis-v" aria-hidden="true"></i> {{post.userId}} <br>
+                                    {{post.body}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- Shown this section when the data is empty -->
+            <ng-container *ngIf="emptyMessage">
+                <div class="card">
+                    <div class="card-body" *ngIf="emptyMessage">
+                        <h6>Sorry !! No Posts present</h6>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="mb-3"></div>
+        </div>
+        <!-- Loader when the call is busy or loading  -->
+        <div *ngSwitchCase="'busy'">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+                Loading...
+            </div>
+        </div>
+    </div>
+</div>
